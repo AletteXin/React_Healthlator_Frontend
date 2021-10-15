@@ -28,7 +28,7 @@ function InputForm() {
             <Container>
                 <form>
                     <Container className="subBox">
-                        <Row className="boxSubtitle">OVERVIEW</Row>
+                        <Row className="boxSubtitle">{t("overview.title")}</Row>
                         <HealthCardField field="ID" patientInfo="999999" />
 
                         <Row className="fieldRow">
@@ -127,7 +127,7 @@ function InputForm() {
 
                     </Container>
                     <Container className="subBox">
-                        <Row className="boxSubtitle">CURRENT SYMPTOMS</Row>
+                        <Row className="boxSubtitle">{t("currentsymptoms.title")}</Row>
                         <ChooseSymptom firstSymptom={t("fever.label")} secondSymptom={t("headache.label")} thirdSymptom={t("nightchills.label")} />
                         <ChooseSymptom firstSymptom={t("sorethroat.label")} secondSymptom={t("cough.label")} thirdSymptom={t("breathing.label")} />
                         <ChooseSymptom firstSymptom={t("diarrhoea.label")} secondSymptom={t("chestpain.label")} thirdSymptom={t("legnumb.label")} />
@@ -136,11 +136,11 @@ function InputForm() {
                     </Container>
 
                     <Container className="subBox">
-                        <Row className="boxSubtitle">EXISTING HEALTH CONDITIONS</Row>
-                        <ChooseSymptom firstSymptom={t("fever.label")} secondSymptom={t("headache.label")} thirdSymptom={t("nightchills.label")} />
-                        <ChooseSymptom firstSymptom={t("sorethroat.label")} secondSymptom={t("cough.label")} thirdSymptom={t("breathing.label")} />
-                        <ChooseSymptom firstSymptom={t("diarrhoea.label")} secondSymptom={t("chestpain.label")} thirdSymptom={t("legnumb.label")} />
-                        <ChooseSymptom firstSymptom={t("handnumb.label")} secondSymptom={t("facenumb.label")} />
+                        <Row className="boxSubtitle">{t("chronicconditions.title")}</Row>
+                        <ChooseSymptom firstSymptom={t("diabetes.label")} secondSymptom={t("highbloodpressure.label")} thirdSymptom={t("highcholesterol.label")} />
+                        <ChooseSymptom firstSymptom={t("asthma.label")} secondSymptom={t("chronickidney.label")} thirdSymptom={t("arthritis.label")} />
+                        <ChooseSymptom firstSymptom={t("pancreaticcancer.label")} secondSymptom={t("livercancer.label")} thirdSymptom={t("colorectalcancer.label")} />
+                        <ChooseSymptom firstSymptom={t("copd.label")} secondSymptom={t("depression.label")} thirdSymptom={t("lungcancer.label")} />
                     </Container>
 
                     <input type="submit" value="Submit" />
@@ -152,6 +152,7 @@ function InputForm() {
 }
 
 export default InputForm;
+
 
 
 // return (

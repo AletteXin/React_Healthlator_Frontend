@@ -1,5 +1,10 @@
 export const translations_bm = {
 
+
+    "overview.title": "MAKLUMAT PESAKIT",
+    "currentsymptoms.title": "SIMPTOM SEMASA",
+    "chronicconditions.title": "PENYAKIT KRONIK",
+
     "gender.label": "Janita",
     "female.answer": "Perempuan",
     "male.answer": "Lelaki",
@@ -28,4 +33,18 @@ export const translations_bm = {
     "handnumb.label": "Kebas tangan",
     "facenumb.label": "Kebas muka",
     "smoker.label": "Perokok",
+
+    "diabetes.label": "Kencing Manis",
+    "highbloodpressure.label": "Darah Tinggi",
+    "highcholesterol.label": "Kolesterol Tinggi",
+    "asthma.label": "Asma",
+    "chronickidney.label": "Buah Pinggang Kronik",
+    "arthritis.label": "Artritis",
+    "pancreaticcancer.label": "Barah Pankreas",
+    "livercancer.label": "Barah Hati",
+    "colorectalcancer.label": "Kanser Kolorektal",
+    "copd.label": "COPD",
+    "depression.label": "Kemurangan",
+    "lungcancer.label": "Kanser Paru-paru",
+
 }

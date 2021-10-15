@@ -1,4 +1,10 @@
 export const translations_en = {
+
+"overview.title": "PATIENT DETAILS",
+"currentsymptoms.title": "CURRENT SYMPTOMS",
+"chronicconditions.title": "EXISTING CHRONIC CONDITIONS",
+
+
     "gender.label": "Gender",
     "female.answer": "Female",
     "male.answer": "Male",
@@ -28,6 +34,14 @@ export const translations_en = {
     "diabetes.label": "Diabetes",
     "highbloodpressure.label": "High blood pressure",
     "highcholesterol.label": "High cholesterol",
-    
+    "asthma.label": "Asthma",
+    "chronickidney.label": "Chronic Kidney Disease",
+    "arthritis.label": "Arthritis",
+    "pancreaticcancer.label": "Pancreatic Cancer",
+    "livercancer.label": "Liver Cancer",
+    "colorectalcancer.label": "Colorectal Cancer",
+    "copd.label": "COPD",
+    "depression.label": "Depression",
+    "lungcancer.label": "Lung Cancer",
 
 }

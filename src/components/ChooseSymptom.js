@@ -29,7 +29,6 @@ function ChooseSymptom({ firstSymptom, secondSymptom, thirdSymptom, setFirst, se
         }
     }
 
-
     const changeThirdStyle = () => {
 
         if (thirdstyle == "symptomBox") {
@@ -42,15 +41,11 @@ function ChooseSymptom({ firstSymptom, secondSymptom, thirdSymptom, setFirst, se
 
 
     return (
-
-
         <Row>
             <Col className={firststyle} onClick={changeFirstStyle}>{firstSymptom}</Col>
             <Col className={secondstyle} onClick={changeSecondStyle}>{secondSymptom}</Col>
             <Col className={thirdstyle} onClick={changeThirdStyle}>{thirdSymptom}</Col>
         </Row>
-
-
     );
 }
 
