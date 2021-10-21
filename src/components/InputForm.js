@@ -15,6 +15,7 @@ function InputForm() {
 
     const { t, i18n } = useTranslation();
 
+    const [name, setName] = useState("");
     const [gender, setGender] = useState("");
     const [birthdate, setBirthDate] = useState(new Date());
     const [address, setAddress] = useState("");
@@ -30,6 +31,20 @@ function InputForm() {
                     <Container className="subBox">
                         <Row className="boxSubtitle">{t("overview.title")}</Row>
                         <HealthCardField field="ID" patientInfo="999999" />
+
+                        <Row className="fieldRow">
+                            <Col className="fieldRow">{t("name.label")}</Col>
+                            <Col className="inputField">
+                                <label>
+                                    <input
+                                        className="inputBox"
+                                        type="text"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}>
+                                    </input>
+                                </label>
+                            </Col>
+                        </Row>
 
                         <Row className="fieldRow">
                             <Col className="fieldRow">{t("gender.label")}</Col>

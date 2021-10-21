@@ -1,10 +1,10 @@
 export const translations_bm = {
-
+    "retrieveornew.title": "REKOD LAMA ATAUPUN REKOD BARU",
 
     "overview.title": "MAKLUMAT PESAKIT",
     "currentsymptoms.title": "SIMPTOM SEMASA",
     "chronicconditions.title": "PENYAKIT KRONIK",
-
+    "name.label": "Nama",
     "gender.label": "Janita",
     "female.answer": "Perempuan",
     "male.answer": "Lelaki",

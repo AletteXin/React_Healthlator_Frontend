@@ -31,7 +31,15 @@
   }
 }
 
-
+.UserInputBox{
+  width: 700px;
+  background-color: white;
+  border: solid;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 30px;
+  padding: 20px;
+}
 
 .HealthCardBox{
   width: 700px;
@@ -42,6 +50,8 @@
   border-radius: 30px;
   padding: 20px;
 }
+
+
 
 .symptomBox{
   background-color: lightgrey;

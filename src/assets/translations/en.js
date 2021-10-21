@@ -1,10 +1,11 @@
 export const translations_en = {
+    "retrieveornew.title": "RETRIEVE PREVIOUS RECORD OR CREATE NEW RECORD",
 
-"overview.title": "PATIENT DETAILS",
-"currentsymptoms.title": "CURRENT SYMPTOMS",
-"chronicconditions.title": "EXISTING CHRONIC CONDITIONS",
+    "overview.title": "PATIENT DETAILS",
+    "currentsymptoms.title": "CURRENT SYMPTOMS",
+    "chronicconditions.title": "EXISTING CHRONIC CONDITIONS",
 
-
+    "name.label": "Name",
     "gender.label": "Gender",
     "female.answer": "Female",
     "male.answer": "Male",
