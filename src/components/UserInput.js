@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useState } from 'react';
 import "../i18n";
 
-function UserInput({previousName, setPreviousName, previousId, setPreviousId}) {
+function UserInput({ setPreviousName, setPreviousId, setEntryRecorded }) {
 
     const { t, i18n } = useTranslation();
 
@@ -20,7 +20,10 @@ function UserInput({previousName, setPreviousName, previousId, setPreviousId}) {
         console.log(inputId)
         setPreviousName(inputName)
         setPreviousId(inputId)
+        setEntryRecorded("False")
     };
+
+
 
     return (
         <div className="UserInputBox">
@@ -28,43 +31,42 @@ function UserInput({previousName, setPreviousName, previousId, setPreviousId}) {
 
                 <Container className="subBox">
                     <form onSubmit={(e) => submitUser(e)}>
-                    <Row className="boxSubtitle">{t("retrieveornew.title")}</Row>
+                        <Row className="boxSubtitle">{t("retrieve.title")}</Row>
 
-                    <Row className="fieldRow">
-                        <Col className="fieldRow">{t("name.label")}</Col>
-                        <Col className="inputField">
-                            <label>
-                                <input
-                                    className="inputBox"
-                                    type="text"
-                                    value={inputName}
-                                    onChange={(e) => setInputName(e.target.value)}>
-                                </input>
-                            </label>
-                        </Col>
-                    </Row>
+                        <Row className="fieldRow">
+                            <Col className="fieldRow">{t("name.label")}</Col>
+                            <Col className="inputField">
+                                <label>
+                                    <input
+                                        className="inputBox"
+                                        type="text"
+                                        value={inputName}
+                                        onChange={(e) => setInputName(e.target.value)}>
+                                    </input>
+                                </label>
+                            </Col>
+                        </Row>
 
-                    <Row className="fieldRow">
-                        <Col className="fieldRow">Form ID</Col>
-                        <Col className="inputField">
-                            <label>
-                                <input
-                                    className="inputBox"
-                                    type="text"
-                                    value={inputId}
-                                    onChange={(e) => setInputId(e.target.value)}>
-                                </input>
-                            </label>
-                        </Col>
-                    </Row>
-                    <input 
-                    type="submit" 
-                    value="Submit" 
-                    />
-                </form>
+                        <Row className="fieldRow">
+                            <Col className="fieldRow">Form ID</Col>
+                            <Col className="inputField">
+                                <label>
+                                    <input
+                                        className="inputBox"
+                                        type="text"
+                                        value={inputId}
+                                        onChange={(e) => setInputId(e.target.value)}>
+                                    </input>
+                                </label>
+                            </Col>
+                        </Row>
+                        <input
+                            type="submit"
+                            value="Submit"
+                        />
+                    </form>
                 </Container>
 
-               
             </Container>
 
         </div>

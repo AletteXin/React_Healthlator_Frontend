@@ -1,7 +1,8 @@
 export const translations_en = {
-    "retrieveornew.title": "RETRIEVE PREVIOUS RECORD OR CREATE NEW RECORD",
-
+    "retrieve.title": "RETRIEVE PREVIOUS RECORD",
+    
     "overview.title": "PATIENT DETAILS",
+    "newentry.title": "CREATE NEW FORM",
     "currentsymptoms.title": "CURRENT SYMPTOMS",
     "chronicconditions.title": "EXISTING CHRONIC CONDITIONS",
 

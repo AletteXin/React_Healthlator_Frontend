@@ -1,7 +1,8 @@
 export const translations_bm = {
-    "retrieveornew.title": "REKOD LAMA ATAUPUN REKOD BARU",
+    "retrieve.title": "REKOD LAMA",
 
     "overview.title": "MAKLUMAT PESAKIT",
+    "newentry.title": "BINA REKOD BARU",
     "currentsymptoms.title": "SIMPTOM SEMASA",
     "chronicconditions.title": "PENYAKIT KRONIK",
     "name.label": "Nama",

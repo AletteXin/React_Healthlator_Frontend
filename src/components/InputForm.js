@@ -10,156 +10,198 @@ import { useTranslation } from "react-i18next";
 import "../i18n";
 
 
-function InputForm() {
+function InputForm({setEntryRecorded, entryRecorded}) {
 
 
     const { t, i18n } = useTranslation();
 
     const [name, setName] = useState("");
     const [gender, setGender] = useState("");
-    const [birthdate, setBirthDate] = useState(new Date());
+    const [birthdate, setBirthDate] = useState("");
     const [address, setAddress] = useState("");
     const [medications, setMedications] = useState("");
     const [relativeName, setRelativeName] = useState("");
     const [relativeNumber, setRelativeNumber] = useState("");
     const [reason, setReason] = useState("");
+    const [message, setMessage] = useState("")
+
+
+    const submitNewEntry = (e) => {
+        e.preventDefault()
+        fetch('http://127.0.0.1:5000/api/records/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'http://localhost:3000',
+            },
+            body: JSON.stringify({
+                Name: name,
+                Gender: gender,
+                Birthdate: birthdate,
+                Address: address,
+                Medications: medications,
+                Nameofnextkin: relativeName,
+                Phoneofnextkin: relativeNumber,
+                Reasonforvisit: reason,
+
+            })
+        }).then(response => response.json().then(data => {
+            console.log("Connected")
+            console.log(data.message)
+            setMessage(data.message[0]);
+        }))
+
+        setEntryRecorded("True")
+    };
+    
+    const createNewForm = (e) => {
+        window.location.reload();
+    };
 
     return (
         <div className="HealthCardBox">
             <Container>
-                <form>
-                    <Container className="subBox">
-                        <Row className="boxSubtitle">{t("overview.title")}</Row>
-                        <HealthCardField field="ID" patientInfo="999999" />
+                {entryRecorded == "False" ?
+                    (<form onSubmit={(e) => submitNewEntry(e)}>
+                        <Container className="subBox">
+                            <Row className="boxSubtitle">{t("newentry.title")}</Row>
 
-                        <Row className="fieldRow">
-                            <Col className="fieldRow">{t("name.label")}</Col>
-                            <Col className="inputField">
-                                <label>
-                                    <input
-                                        className="inputBox"
-                                        type="text"
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}>
-                                    </input>
-                                </label>
-                            </Col>
-                        </Row>
+                            <Row className="fieldRow">
+                                <Col className="fieldRow">{t("name.label")}</Col>
+                                <Col className="inputField">
+                                    <label>
+                                        <input
+                                            className="inputBox"
+                                            type="text"
+                                            value={name}
+                                            onChange={(e) => setName(e.target.value)}>
+                                        </input>
+                                    </label>
+                                </Col>
+                            </Row>
 
-                        <Row className="fieldRow">
-                            <Col className="fieldRow">{t("gender.label")}</Col>
-                            <Col className="inputField">
-                                <label>
-                                    <select 
-                                        value={gender}
-                                        autosize={false}
-                                        onChange={(e) => setGender(e.target.value)}>
-                                        <option value="Male"> {t("male.answer")}</option>
-                                        <option value="Female"> {t("female.answer")}</option>
-                                    </select>
-                                </label>
-                            </Col>
-                        </Row>
+                            <Row className="fieldRow">
+                                <Col className="fieldRow">{t("gender.label")}</Col>
+                                <Col className="inputField">
+                                    <label>
+                                        <select
+                                            placeholder="Choose"
+                                            value={gender}
+                                            autosize={false}
+                                            onChange={(e) => setGender(e.target.value)}>
+                                            <option value="Male"> {t("male.answer")}</option>
+                                            <option value="Female"> {t("female.answer")}</option>
+                                        </select>
+                                    </label>
+                                </Col>
+                            </Row>
 
-                        <Row className="fieldRow">
-                            <Col className="fieldRow">{t("birthdate.label")}</Col>
-                            <Col className="inputField">
-                                <label>
-                                    <DatePicker
-                                        selected = {birthdate}
-                                        onChange={(e) => setBirthDate(e.target.selected)} />
-                                </label>
-                            </Col>
-                        </Row>
+                            <Row className="fieldRow">
+                                <Col className="fieldRow">{t("birthdate.label")}</Col>
+                                <Col className="inputField">
+                                    <label>
+                                        <DatePicker
+                                            selected={birthdate}
+                                            onChange={birthdate => setBirthDate(birthdate)} />
+                                    </label>
+                                </Col>
+                            </Row>
 
-                        <Row className="fieldRow">
-                            <Col className="fieldRow">{t("address.label")}</Col>
-                            <Col className="inputField">
-                                <label>
-                                    <textarea
-                                        className="inputBox"
-                                        value={address}
-                                        onChange={(e) => setAddress(e.target.value)}>
-                                    </textarea>
-                                </label>
-                            </Col>
-                        </Row>
+                            <Row className="fieldRow">
+                                <Col className="fieldRow">{t("address.label")}</Col>
+                                <Col className="inputField">
+                                    <label>
+                                        <textarea
+                                            className="inputBox"
+                                            value={address}
+                                            onChange={(e) => setAddress(e.target.value)}>
+                                        </textarea>
+                                    </label>
+                                </Col>
+                            </Row>
 
-                        <Row className="fieldRow">
-                            <Col className="fieldRow">{t("medications.label")}</Col>
-                            <Col className="inputField">
-                                <label>
-                                    <textarea
-                                        className="inputBox"
-                                        value={medications}
-                                        onChange={(e) => setMedications(e.target.value)}>
-                                    </textarea>
-                                </label>
-                            </Col>
-                        </Row>
+                            <Row className="fieldRow">
+                                <Col className="fieldRow">{t("medications.label")}</Col>
+                                <Col className="inputField">
+                                    <label>
+                                        <textarea
+                                            className="inputBox"
+                                            value={medications}
+                                            onChange={(e) => setMedications(e.target.value)}>
+                                        </textarea>
+                                    </label>
+                                </Col>
+                            </Row>
 
-                        <Row className="fieldRow">
-                            <Col className="fieldRow">{t("relativename.label")}</Col>
-                            <Col className="inputField">
-                                <label>
-                                    <input
-                                        className="inputBox"
-                                    type="text"
-                                        value={relativeName}
-                                        onChange={(e) => setRelativeName(e.target.value)}>
-                                    </input>
-                                </label>
-                            </Col>
-                        </Row>
+                            <Row className="fieldRow">
+                                <Col className="fieldRow">{t("relativename.label")}</Col>
+                                <Col className="inputField">
+                                    <label>
+                                        <input
+                                            className="inputBox"
+                                            type="text"
+                                            value={relativeName}
+                                            onChange={(e) => setRelativeName(e.target.value)}>
+                                        </input>
+                                    </label>
+                                </Col>
+                            </Row>
 
-                        <Row className="fieldRow">
-                            <Col className="fieldRow">{t("relativenumber.label")}</Col>
-                            <Col className="inputField">
-                                <label>
-                                    <input 
-                                        className="inputBox"
-                                    type="text"
-                                        value={relativeNumber}
-                                        onChange={(e) => setRelativeNumber(e.target.value)}>
-                                    </input>
-                                </label>
-                            </Col>
-                        </Row>
+                            <Row className="fieldRow">
+                                <Col className="fieldRow">{t("relativenumber.label")}</Col>
+                                <Col className="inputField">
+                                    <label>
+                                        <input
+                                            className="inputBox"
+                                            type="text"
+                                            value={relativeNumber}
+                                            onChange={(e) => setRelativeNumber(e.target.value)}>
+                                        </input>
+                                    </label>
+                                </Col>
+                            </Row>
 
-                        <Row className="fieldRow">
-                            <Col className="fieldRow">{t("reason.label")}</Col>
-                            <Col className="inputField">
-                                <label>
-                                    <textarea 
-                                    className = "inputBox"
-                                    value={reason}
-                                        onChange={(e) => setReason(e.target.value)}>
-                                    </textarea>
-                                </label>
-                            </Col>
-                        </Row>
+                            <Row className="fieldRow">
+                                <Col className="fieldRow">{t("reason.label")}</Col>
+                                <Col className="inputField">
+                                    <label>
+                                        <textarea
+                                            className="inputBox"
+                                            value={reason}
+                                            onChange={(e) => setReason(e.target.value)}>
+                                        </textarea>
+                                    </label>
+                                </Col>
+                            </Row>
 
+
+                        </Container>
+                        <Container className="subBox">
+                            <Row className="boxSubtitle">{t("currentsymptoms.title")}</Row>
+                            <ChooseSymptom firstSymptom={t("fever.label")} secondSymptom={t("headache.label")} thirdSymptom={t("nightchills.label")} />
+                            <ChooseSymptom firstSymptom={t("sorethroat.label")} secondSymptom={t("cough.label")} thirdSymptom={t("breathing.label")} />
+                            <ChooseSymptom firstSymptom={t("diarrhoea.label")} secondSymptom={t("chestpain.label")} thirdSymptom={t("legnumb.label")} />
+                            <ChooseSymptom firstSymptom={t("handnumb.label")} secondSymptom={t("facenumb.label")} />
+
+                        </Container>
+
+                        <Container className="subBox">
+                            <Row className="boxSubtitle">{t("chronicconditions.title")}</Row>
+                            <ChooseSymptom firstSymptom={t("diabetes.label")} secondSymptom={t("highbloodpressure.label")} thirdSymptom={t("highcholesterol.label")} />
+                            <ChooseSymptom firstSymptom={t("asthma.label")} secondSymptom={t("chronickidney.label")} thirdSymptom={t("arthritis.label")} />
+                            <ChooseSymptom firstSymptom={t("pancreaticcancer.label")} secondSymptom={t("livercancer.label")} thirdSymptom={t("colorectalcancer.label")} />
+                            <ChooseSymptom firstSymptom={t("copd.label")} secondSymptom={t("depression.label")} thirdSymptom={t("lungcancer.label")} />
+                        </Container>
+
+                        <input type="submit" value="Submit" />
+                    </form>)
+                    : (<Container>
+                        <p>Your form has been created. Your Form ID is {message}</p>
+
+                            <button onClick={(e) => createNewForm(e)}>Create New Form</button>
 
                     </Container>
-                    <Container className="subBox">
-                        <Row className="boxSubtitle">{t("currentsymptoms.title")}</Row>
-                        <ChooseSymptom firstSymptom={t("fever.label")} secondSymptom={t("headache.label")} thirdSymptom={t("nightchills.label")} />
-                        <ChooseSymptom firstSymptom={t("sorethroat.label")} secondSymptom={t("cough.label")} thirdSymptom={t("breathing.label")} />
-                        <ChooseSymptom firstSymptom={t("diarrhoea.label")} secondSymptom={t("chestpain.label")} thirdSymptom={t("legnumb.label")} />
-                        <ChooseSymptom firstSymptom={t("handnumb.label")} secondSymptom={t("facenumb.label")} />
-
-                    </Container>
-
-                    <Container className="subBox">
-                        <Row className="boxSubtitle">{t("chronicconditions.title")}</Row>
-                        <ChooseSymptom firstSymptom={t("diabetes.label")} secondSymptom={t("highbloodpressure.label")} thirdSymptom={t("highcholesterol.label")} />
-                        <ChooseSymptom firstSymptom={t("asthma.label")} secondSymptom={t("chronickidney.label")} thirdSymptom={t("arthritis.label")} />
-                        <ChooseSymptom firstSymptom={t("pancreaticcancer.label")} secondSymptom={t("livercancer.label")} thirdSymptom={t("colorectalcancer.label")} />
-                        <ChooseSymptom firstSymptom={t("copd.label")} secondSymptom={t("depression.label")} thirdSymptom={t("lungcancer.label")} />
-                    </Container>
-
-                    <input type="submit" value="Submit" />
-                </form>
+                    )}
             </Container>
 
         </div>
