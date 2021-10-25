@@ -10,21 +10,46 @@ import { useTranslation } from "react-i18next";
 import "../i18n";
 
 
-function InputForm({setEntryRecorded, entryRecorded}) {
+function InputForm({ setEntryRecorded, entryRecorded }) {
 
 
     const { t, i18n } = useTranslation();
 
     const [name, setName] = useState("");
-    const [gender, setGender] = useState("");
+    const [gender, setGender] = useState('Male');
     const [birthdate, setBirthDate] = useState("");
     const [address, setAddress] = useState("");
     const [medications, setMedications] = useState("");
     const [relativeName, setRelativeName] = useState("");
     const [relativeNumber, setRelativeNumber] = useState("");
     const [reason, setReason] = useState("");
-    const [message, setMessage] = useState("")
+    const [message, setMessage] = useState("");
+    const [fever, setFever] = useState("False");
+    const [headache, setHeadache] = useState("False");
+    const [nightChills, setNightChills] = useState("False");
+    const [soreThroat, setSoreThroat] = useState("False");
+    const [cough, setCough] = useState("False");
+    const [breathingDiff, setBreathingDiff] = useState("False");
+    const [diarrhoea, setDiarrhoea] = useState("False");
+    const [chestPain, setChestPain] = useState("False");
+    const [legNumb, setlegNumb] = useState("False")
+    const [handNumb, setHandNumb] = useState("False");
+    const [faceNumb, setFaceNumb] = useState("False");
+    const [diabetes, setDiabetes] = useState("False");
+    const [highBlood, setHighBlood] = useState("False");
+    const [highCholesterol, setHighCholesterol] = useState("False");
+    const [asthma, setAsthma] = useState("False");
+    const [kidneyDisease, setKidneyDisease] = useState("False");
+    const [arthritis, setArthritis] = useState("False");
+    const [pancreaticCancer, setPancreaticCancer] = useState("False");
+    const [liverCancer, setLiverCancer] = useState("False");
+    const [colorectalCancer, setColorectalCancer] = useState("False");
+    const [COPD, setCOPD] = useState("False");
+    const [depression, setDepression] = useState("False");
+    const [lungCancer, setLungCancer] = useState("False");
 
+    const [maleGenderStyle, setMaleGenderStyle] = useState("genderBox")
+    const [femaleGenderStyle, setFemaleGenderStyle] = useState("genderBoxChosen")
 
     const submitNewEntry = (e) => {
         e.preventDefault()
@@ -43,6 +68,32 @@ function InputForm({setEntryRecorded, entryRecorded}) {
                 Nameofnextkin: relativeName,
                 Phoneofnextkin: relativeNumber,
                 Reasonforvisit: reason,
+                Fever: fever,
+                Headache: headache,
+                Nightchills: nightChills,
+                Sorethroat: soreThroat,
+                Cough: cough,
+                Breathingdiff: breathingDiff,
+                Diarrhoea: diarrhoea,
+                Chestpain: chestPain,
+                Legnumbness: legNumb,
+                Handnumbness: handNumb,
+                Facenumbness: faceNumb,
+                Diabetes: diabetes,
+                Highbloodpressure: highBlood,
+                Highcholesterol: highCholesterol,
+                Asthma: asthma,
+                Kidneydisease: kidneyDisease,
+                Arthritis: arthritis,
+                Pancreaticcancer: pancreaticCancer,
+                Livercancer: liverCancer,
+                Colorectalcancer: colorectalCancer,
+                COPD: COPD,
+                Depression: depression,
+                Lungcancer: lungCancer,
+
+
+
 
             })
         }).then(response => response.json().then(data => {
@@ -53,10 +104,28 @@ function InputForm({setEntryRecorded, entryRecorded}) {
 
         setEntryRecorded("True")
     };
-    
+
     const createNewForm = (e) => {
         window.location.reload();
     };
+
+
+    const changeToMaleGenderStyle = () => {
+
+        setMaleGenderStyle("genderBoxChosen")
+        setFemaleGenderStyle("genderBox")
+        setGender("Male")
+    }
+
+    const changeToFemaleGenderStyle = () => {
+
+        setMaleGenderStyle("genderBox")
+        setFemaleGenderStyle("genderBoxChosen")
+        setGender("Female")
+
+    }
+
+
 
     return (
         <div className="HealthCardBox">
@@ -82,18 +151,23 @@ function InputForm({setEntryRecorded, entryRecorded}) {
 
                             <Row className="fieldRow">
                                 <Col className="fieldRow">{t("gender.label")}</Col>
-                                <Col className="inputField">
+                                {/* <Col className="inputField">
                                     <label>
                                         <select
                                             placeholder="Choose"
                                             value={gender}
                                             autosize={false}
                                             onChange={(e) => setGender(e.target.value)}>
+                                            <option disabled hidden value=''></option>
                                             <option value="Male"> {t("male.answer")}</option>
                                             <option value="Female"> {t("female.answer")}</option>
                                         </select>
                                     </label>
-                                </Col>
+                                </Col> */}
+                                <Col></Col>
+                                <Col className={maleGenderStyle} onClick={changeToMaleGenderStyle}>{t("male.answer")}</Col>
+                                <Col className={femaleGenderStyle} onClick={changeToFemaleGenderStyle}>{t("female.answer")}</Col>
+                                
                             </Row>
 
                             <Row className="fieldRow">
@@ -178,19 +252,35 @@ function InputForm({setEntryRecorded, entryRecorded}) {
                         </Container>
                         <Container className="subBox">
                             <Row className="boxSubtitle">{t("currentsymptoms.title")}</Row>
-                            <ChooseSymptom firstSymptom={t("fever.label")} secondSymptom={t("headache.label")} thirdSymptom={t("nightchills.label")} />
-                            <ChooseSymptom firstSymptom={t("sorethroat.label")} secondSymptom={t("cough.label")} thirdSymptom={t("breathing.label")} />
-                            <ChooseSymptom firstSymptom={t("diarrhoea.label")} secondSymptom={t("chestpain.label")} thirdSymptom={t("legnumb.label")} />
-                            <ChooseSymptom firstSymptom={t("handnumb.label")} secondSymptom={t("facenumb.label")} />
+                            <ChooseSymptom firstSymptom={t("fever.label")} setFirst={setFever}
+                                secondSymptom={t("headache.label")} setSecond={setHeadache}
+                                thirdSymptom={t("nightchills.label")} setThird={setNightChills} />
+                            <ChooseSymptom
+                                firstSymptom={t("sorethroat.label")} setFirst={setSoreThroat}
+                                secondSymptom={t("cough.label")} setSecond={setCough}
+                                thirdSymptom={t("breathing.label")} setThird={setBreathingDiff} />
+                            <ChooseSymptom firstSymptom={t("diarrhoea.label")} setFirst={setDiarrhoea}
+                                secondSymptom={t("chestpain.label")} setSecond={setChestPain}
+                                thirdSymptom={t("legnumb.label")} setThird={setlegNumb} />
+                            <ChooseSymptom firstSymptom={t("handnumb.label")} setFirst={setHandNumb}
+                                secondSymptom={t("facenumb.label")} setSecond={setFaceNumb} />
 
                         </Container>
 
                         <Container className="subBox">
                             <Row className="boxSubtitle">{t("chronicconditions.title")}</Row>
-                            <ChooseSymptom firstSymptom={t("diabetes.label")} secondSymptom={t("highbloodpressure.label")} thirdSymptom={t("highcholesterol.label")} />
-                            <ChooseSymptom firstSymptom={t("asthma.label")} secondSymptom={t("chronickidney.label")} thirdSymptom={t("arthritis.label")} />
-                            <ChooseSymptom firstSymptom={t("pancreaticcancer.label")} secondSymptom={t("livercancer.label")} thirdSymptom={t("colorectalcancer.label")} />
-                            <ChooseSymptom firstSymptom={t("copd.label")} secondSymptom={t("depression.label")} thirdSymptom={t("lungcancer.label")} />
+                            <ChooseSymptom firstSymptom={t("diabetes.label")} setFirst={setDiabetes}
+                                secondSymptom={t("highbloodpressure.label")} setSecond={setHighBlood}
+                                thirdSymptom={t("highcholesterol.label")} setThird={setHighCholesterol} />
+                            <ChooseSymptom firstSymptom={t("asthma.label")} setFirst={setAsthma}
+                                secondSymptom={t("chronickidney.label")} setSecond={setKidneyDisease}
+                                thirdSymptom={t("arthritis.label")} setThird={setArthritis} />
+                            <ChooseSymptom firstSymptom={t("pancreaticcancer.label")} setFirst={setPancreaticCancer}
+                                secondSymptom={t("livercancer.label")} setSecond={setLiverCancer}
+                                thirdSymptom={t("colorectalcancer.label")} setThird={setColorectalCancer} />
+                            <ChooseSymptom firstSymptom={t("copd.label")} setFirst={setCOPD}
+                                secondSymptom={t("depression.label")} setSecond={setDepression}
+                                thirdSymptom={t("lungcancer.label")} setThird={setLungCancer} />
                         </Container>
 
                         <input type="submit" value="Submit" />
@@ -198,7 +288,7 @@ function InputForm({setEntryRecorded, entryRecorded}) {
                     : (<Container>
                         <p>Your form has been created. Your Form ID is {message}</p>
 
-                            <button onClick={(e) => createNewForm(e)}>Create New Form</button>
+                        <button onClick={(e) => createNewForm(e)}>Create New Form</button>
 
                     </Container>
                     )}

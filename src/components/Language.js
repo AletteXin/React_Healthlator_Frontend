@@ -25,7 +25,7 @@ function Language({ }) {
                 <input type="radio" value="bm" name="language" /> BM
                 </Col>
             <Col className="languageBox">
-                <input type="radio" value="ch" name="language" /> 中文
+                <input type="radio" value="cn" name="language" /> 中文
                 </Col>
             <Col></Col>
         </Row>

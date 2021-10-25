@@ -3,6 +3,7 @@ import Backend from "i18next-xhr-backend";
 import { initReactI18next } from "react-i18next";
 import { translations_bm } from "./assets/translations/bm"
 import { translations_en } from "./assets/translations/en"
+import { translations_cn } from "./assets/translations/cn"
 import LanguageDetector from "i18next-browser-languagedetector";
 
 
@@ -18,6 +19,10 @@ i18n
             },
             bm: {
                 translation: translations_bm
+            },
+
+            cn: {
+                translation: translations_cn
             },
         },
 

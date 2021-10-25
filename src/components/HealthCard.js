@@ -20,7 +20,30 @@ function HealthCard({ previousName, previousId, entryRecorded, setEntryRecorded 
     const [relativeName, setRelativeName] = useState("");
     const [relativeNumber, setRelativeNumber] = useState("");
     const [reason, setReason] = useState("");
-    const [error, setError] = useState("")
+    const [error, setError] = useState("");
+    const [fever, setFever] = useState("False");
+    const [headache, setHeadache] = useState("False");
+    const [nightChills, setNightChills] = useState("False");
+    const [soreThroat, setSoreThroat] = useState("False");
+    const [cough, setCough] = useState("False");
+    const [breathingDiff, setBreathingDiff] = useState("False");
+    const [diarrhoea, setDiarrhoea] = useState("False");
+    const [chestPain, setChestPain] = useState("False");
+    const [legNumb, setlegNumb] = useState("False")
+    const [handNumb, setHandNumb] = useState("False");
+    const [faceNumb, setFaceNumb] = useState("False");
+    const [diabetes, setDiabetes] = useState("False");
+    const [highBlood, setHighBlood] = useState("False");
+    const [highCholesterol, setHighCholesterol] = useState("False");
+    const [asthma, setAsthma] = useState("False");
+    const [kidneyDisease, setKidneyDisease] = useState("False");
+    const [arthritis, setArthritis] = useState("False");
+    const [pancreaticCancer, setPancreaticCancer] = useState("False");
+    const [liverCancer, setLiverCancer] = useState("False");
+    const [colorectalCancer, setColorectalCancer] = useState("False");
+    const [COPD, setCOPD] = useState("False");
+    const [depression, setDepression] = useState("False");
+    const [lungCancer, setLungCancer] = useState("False");
 
     useEffect(() => {
         fetch('http://127.0.0.1:5000/api/records/show', {
@@ -34,8 +57,9 @@ function HealthCard({ previousName, previousId, entryRecorded, setEntryRecorded 
                 Name: previousName,
             })
         }).then(response => response.json().then(data => {
-            console.log("Connected")
-            console.log(data.record_details[0][0]["Gender"])
+            console.log("Connected");
+            console.log(data.record_details[0][0]["Gender"]);
+            setError(data.record_details[0][0]['Errormessage']);
             setId(data.record_details[0][0]["id"]);
             setName(data.record_details[0][0]["Name"]);
             setGender(data.record_details[0][0]["Gender"]);
@@ -45,7 +69,29 @@ function HealthCard({ previousName, previousId, entryRecorded, setEntryRecorded 
             setRelativeName(data.record_details[0][0]["Nameofnextkin"]);
             setRelativeNumber(data.record_details[0][0]["Phoneofnextkin"]);
             setReason(data.record_details[0][0]['Reasonforvisit']);
-            setError(data.record_details[0][0]['Errormessage']);
+            setFever(data.record_details[0][0]['Fever']);
+            setHeadache(data.record_details[0][0]['Headache']);
+            setNightChills(data.record_details[0][0]['Nightchills']);
+            setSoreThroat(data.record_details[0][0]['Sorethroat']);
+            setCough(data.record_details[0][0]['Cough']);
+            setBreathingDiff(data.record_details[0][0]['Breathingdiff']);
+            setDiarrhoea(data.record_details[0][0]['Diarrhoea']);
+            setChestPain(data.record_details[0][0]['Chestpain']);
+            setlegNumb(data.record_details[0][0]['Legnumbness']);
+            setHandNumb(data.record_details[0][0]['Handnumbness']);
+            setFaceNumb(data.record_details[0][0]['Facenumbness']);
+            setDiabetes(data.record_details[0][0]['Diabetes']);
+            setHighBlood(data.record_details[0][0]['Highbloodpressure']);
+            setHighCholesterol(data.record_details[0][0]['Highcholesterol']);
+            setAsthma(data.record_details[0][0]['Asthma']);
+            setKidneyDisease(data.record_details[0][0]['Kidneydisease']);
+            setArthritis(data.record_details[0][0]['Arthritis']);
+            setPancreaticCancer(data.record_details[0][0]['Pancreaticcancer']);
+            setLiverCancer(data.record_details[0][0]['Livercancer']);
+            setColorectalCancer(data.record_details[0][0]['Colorectalcancer']);
+            setCOPD(data.record_details[0][0]['COPD']);
+            setDepression(data.record_details[0][0]['Depression']);
+            setLungCancer(data.record_details[0][0]['Lungcancer']);
         }))
 
     });
@@ -68,7 +114,7 @@ function HealthCard({ previousName, previousId, entryRecorded, setEntryRecorded 
                     <p>{error}</p>
                     <InputForm setEntryRecorded={setEntryRecorded} entryRecorded={entryRecorded} />
                 </Container>)
-                : (
+                : (<div>
                     <div className="HealthCardBox">
                         <Container>
 
@@ -76,6 +122,17 @@ function HealthCard({ previousName, previousId, entryRecorded, setEntryRecorded 
                                 <Row className="boxSubtitle">{t("overview.title")}</Row>
                                 <HealthCardField field="Form ID" patientInfo={id} />
                                 <HealthCardField field={t("name.label")} patientInfo={name} />
+
+                                {gender == "Female" ? (<Row className="fieldRow">
+                                    <Col className="fieldRow">{t("gender.label")}</Col>
+
+                                    <Col></Col><Col className="genderBox">{t("male.answer")}</Col>
+                                    <Col className="genderBoxChosen">{t("female.answer")}</Col> </Row>) :
+                                    (<Row className="fieldRow">
+                                        <Col className="fieldRow">{t("gender.label")}</Col>
+                                        <Col></Col><Col className="genderBoxChosen">{t("male.answer")}</Col>
+                                        <Col className="genderBox">{t("female.answer")}</Col>  </Row>)}
+
                                 <HealthCardField field={t("gender.label")} patientInfo={gender} />
                                 <HealthCardField field={t("birthdate.label")} patientInfo={birthdate} />
                                 <HealthCardField field={t("address.label")} patientInfo={address} />
@@ -87,26 +144,41 @@ function HealthCard({ previousName, previousId, entryRecorded, setEntryRecorded 
 
                             <Container className="subBox">
                                 <Row className="boxSubtitle">{t("currentsymptoms.title")}</Row>
-                                <SymptomRow firstSymptom={t("fever.label")} secondSymptom={t("headache.label")} thirdSymptom={t("nightchills.label")} />
-                                <SymptomRow firstSymptom={t("sorethroat.label")} secondSymptom={t("cough.label")} thirdSymptom={t("breathing.label")} />
-                                <SymptomRow firstSymptom={t("diarrhoea.label")} secondSymptom={t("chestpain.label")} thirdSymptom={t("legnumb.label")} />
-                                <SymptomRow firstSymptom={t("handnumb.label")} secondSymptom={t("facenumb.label")} />
+                                <SymptomRow firstSymptom={t("fever.label")} first={fever}
+                                    secondSymptom={t("headache.label")} second={headache}
+                                    thirdSymptom={t("nightchills.label")} third={nightChills} />
+                                <SymptomRow firstSymptom={t("sorethroat.label")} first={soreThroat}
+                                    secondSymptom={t("cough.label")} second={cough}
+                                    thirdSymptom={t("breathing.label")} third={breathingDiff} />
+                                <SymptomRow firstSymptom={t("diarrhoea.label")} first={diarrhoea}
+                                    secondSymptom={t("chestpain.label")} second={chestPain}
+                                    thirdSymptom={t("legnumb.label")} third={legNumb} />
+                                <SymptomRow firstSymptom={t("handnumb.label")} first={handNumb}
+                                    secondSymptom={t("facenumb.label")} second={faceNumb} />
                             </Container>
 
                             <Container className="subBox">
                                 <Row className="boxSubtitle">{t("chronicconditions.title")}</Row>
-                                <SymptomRow firstSymptom={t("diabetes.label")} secondSymptom={t("highbloodpressure.label")} thirdSymptom={t("highcholesterol.label")} />
-                                <SymptomRow firstSymptom={t("asthma.label")} secondSymptom={t("chronickidney.label")} thirdSymptom={t("arthritis.label")} />
-                                <SymptomRow firstSymptom={t("pancreaticcancer.label")} secondSymptom={t("livercancer.label")} thirdSymptom={t("colorectalcancer.label")} />
-                                <SymptomRow firstSymptom={t("copd.label")} secondSymptom={t("depression.label")} thirdSymptom={t("lungcancer.label")} />
+                                <SymptomRow firstSymptom={t("diabetes.label")} first={diabetes}
+                                    secondSymptom={t("highbloodpressure.label")} second={highBlood}
+                                    thirdSymptom={t("highcholesterol.label")} third={highCholesterol} />
+                                <SymptomRow firstSymptom={t("asthma.label")} first={asthma}
+                                    secondSymptom={t("chronickidney.label")} second={kidneyDisease}
+                                    thirdSymptom={t("arthritis.label")} third={arthritis} />
+                                <SymptomRow firstSymptom={t("pancreaticcancer.label")} first={pancreaticCancer}
+                                    secondSymptom={t("livercancer.label")} second={liverCancer}
+                                    thirdSymptom={t("colorectalcancer.label")} third={colorectalCancer} />
+                                <SymptomRow firstSymptom={t("copd.label")} first={COPD}
+                                    secondSymptom={t("depression.label")} second={depression}
+                                    thirdSymptom={t("lungcancer.label")} third={lungCancer} />
                             </Container>
 
                         </Container>
-
-                        <Container>
-                            <button onClick={(e) => createNewForm(e)}>Create New Form</button>
-                        </Container>
-                    </div>)}
+                    </div>
+                    <Container>
+                        <button onClick={(e) => createNewForm(e)}>Create New Form</button>
+                    </Container>
+                </div>)}
 
         </div>
     );

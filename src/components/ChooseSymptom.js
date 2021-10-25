@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function ChooseSymptom({ firstSymptom, secondSymptom, thirdSymptom, setFirst, setSecond, setThird }) {
+function ChooseSymptom({ firstSymptom, secondSymptom, thirdSymptom, setFirst, setSecond, setThird}) {
 
     const [firststyle, setFirstStyle] = useState("symptomBox");
     const [secondstyle, setSecondStyle] = useState("symptomBox");
@@ -13,9 +13,11 @@ function ChooseSymptom({ firstSymptom, secondSymptom, thirdSymptom, setFirst, se
 
         if (firststyle == "symptomBox") {
             setFirstStyle("symptomBoxChosen");
+            setFirst("True");
         }
         else {
-            setFirstStyle("symptomBox")
+            setFirstStyle("symptomBox");
+            setFirst("False");
         }
     }
 
@@ -23,9 +25,11 @@ function ChooseSymptom({ firstSymptom, secondSymptom, thirdSymptom, setFirst, se
 
         if (secondstyle == "symptomBox") {
             setSecondStyle("symptomBoxChosen");
+            setSecond("True");
         }
         else {
-            setSecondStyle("symptomBox")
+            setSecondStyle("symptomBox");
+            setSecond("False");
         }
     }
 
@@ -33,9 +37,11 @@ function ChooseSymptom({ firstSymptom, secondSymptom, thirdSymptom, setFirst, se
 
         if (thirdstyle == "symptomBox") {
             setThirdStyle("symptomBoxChosen");
+            setThird("True");
         }
         else {
-            setThirdStyle("symptomBox")
+            setThirdStyle("symptomBox");
+            setThird("False");
         }
     }
 
