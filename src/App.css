@@ -96,6 +96,8 @@
   border: solid;
   border-width: 2px;
   border-color: lightgray;
+  font-family: 'Cairo', sans-serif;
+  font-weight: 600;
 }
 
 .symptomBoxChosen{
@@ -108,6 +110,8 @@
   border-color: rgb(0, 59, 148);
   color: rgb(0, 59, 148);
   font-size: 14px;
+  font-family: 'Cairo', sans-serif;
+  font-weight: 600;
 }
 
 .languageBox{
@@ -262,13 +266,17 @@ input[type="radio"]:checked:after {
 
 
 .symptomBox{
-height: 60px;
-vertical-align: center;
+height: 80px;
+vertical-align: middle;
+text-align: center;
+padding-top: 5px;
 }
 
 .symptomBoxChosen{
-height: 60px;
-vertical-align: center;
+height: 80px;
+vertical-align: middle;
+text-align: center;
+padding-top: 5px;
 }
 
 }
