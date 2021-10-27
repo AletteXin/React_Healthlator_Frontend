@@ -2,7 +2,7 @@
 
 ### Overview
 
-Healthlator is a digital health tool to assist people, especially aging populations in multicultural countries, make independent hospital visits. A full-stack development project coded using React (frontend) and Flask-Python (backend - link to backend code: ). 
+Healthlator is a digital health tool to assist people, especially aging populations in multicultural countries, make independent hospital visits. A full-stack development project coded using React (frontend) and Flask-Python (backend - link to backend code: https://github.com/AletteXin/FlaskPython_HealthRecord_Backend). 
 
 Live demo of Healthlator: https://nifty-darwin-28b0bb.netlify.app/
 
