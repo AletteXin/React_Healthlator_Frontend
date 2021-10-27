@@ -262,12 +262,12 @@ input[type="radio"]:checked:after {
 
 
 .symptomBox{
-height: 50px;
+height: 60px;
 vertical-align: center;
 }
 
 .symptomBoxChosen{
-height: 50px;
+height: 60px;
 vertical-align: center;
 }
 
