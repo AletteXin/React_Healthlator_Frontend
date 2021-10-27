@@ -2,9 +2,11 @@ export const translations_cn = {
     "retrieve.title": "检索以前的记录",
     "formid.title": "表格编号",
     "submit.title": "提交",
+    "formcreated.message": "您的表单已创建。您的表单编号是 ",
 
     "overview.title": "病人详情",
     "newentry.title": "创建新条目",
+    "newentry.label": "创建新条目",
     "currentsymptoms.title": "症状",
     "chronicconditions.title": "慢性病",
 

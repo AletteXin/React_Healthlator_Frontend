@@ -2,9 +2,11 @@ export const translations_bm = {
     "retrieve.title": "REKOD LAMA",
     "formid.title": "Nombor borang",
     "submit.title": "Hantar",
+    "formcreated.message": "Rekod anda telah dibina. Nombor borang tersebut: ",
 
     "overview.title": "MAKLUMAT PESAKIT",
     "newentry.title": "BINA REKOD BARU",
+    "newentry.label": "Bina Rekod Baru",
     "currentsymptoms.title": "SIMPTOM SEMASA",
     "chronicconditions.title": "PENYAKIT KRONIK",
     "name.label": "Nama",

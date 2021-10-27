@@ -2,9 +2,11 @@ export const translations_en = {
     "retrieve.title": "RETRIEVE PREVIOUS RECORD",
     "formid.title": "Form ID",
     "submit.title": "Submit",
+    "formcreated.message": "Your form has been created. Your Form ID is ",
     
     "overview.title": "PATIENT DETAILS",
     "newentry.title": "CREATE NEW RECORD",
+    "newentry.label": "Create new record",
     "currentsymptoms.title": "CURRENT SYMPTOMS",
     "chronicconditions.title": "EXISTING CHRONIC CONDITIONS",
 

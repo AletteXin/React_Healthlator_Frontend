@@ -286,9 +286,9 @@ function InputForm({ setEntryRecorded, entryRecorded }) {
                         <input type="submit" value={t("submit.title")} className="submitbutton" />
                     </form>)
                     : (<Container>
-                        <p>Your form has been created. Your Form ID is {message}</p>
+                        <p>{t("formcreated.message")} {message}</p>
 
-                        <button onClick={(e) => createNewForm(e)} className="submitbutton">Create New Form</button>
+                        <button onClick={(e) => createNewForm(e)} className="submitbutton">{t("newentry.label")}</button>
 
                     </Container>
                     )}

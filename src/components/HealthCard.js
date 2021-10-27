@@ -179,7 +179,7 @@ function HealthCard({ previousName, previousId, entryRecorded, setEntryRecorded 
                         </Container>
                     </div>
                     <Container>
-                        <button onClick={(e) => createNewForm(e)} className="submitbutton">Create New Form</button>
+                        <button onClick={(e) => createNewForm(e)} className="submitbutton">{t("newentry.label")}</button>
                     </Container>
                 </div>)}
 
