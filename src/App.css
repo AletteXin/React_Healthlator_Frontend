@@ -260,4 +260,15 @@ input[type="radio"]:checked:after {
   padding-right: 8px;
 }
 
+
+.symptomBox{
+height: 50px;
+vertical-align: center;
+}
+
+.symptomBoxChosen{
+height: 50px;
+vertical-align: center;
+}
+
 }
