@@ -1,5 +1,7 @@
 export const translations_bm = {
     "retrieve.title": "REKOD LAMA",
+    "formid.title": "Nombor borang",
+    "submit.title": "Hantar",
 
     "overview.title": "MAKLUMAT PESAKIT",
     "newentry.title": "BINA REKOD BARU",
@@ -34,6 +36,7 @@ export const translations_bm = {
     "handnumb.label": "Kebas tangan",
     "facenumb.label": "Kebas muka",
     "smoker.label": "Perokok",
+    "abdominalpain.label": "Sakit Perut",
 
     "diabetes.label": "Kencing Manis",
     "highbloodpressure.label": "Darah Tinggi",

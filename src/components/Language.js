@@ -17,17 +17,18 @@ function Language({ }) {
     return (
 
         <Row onChange={changeLanguage}>
-            <Col></Col>
+      
             <Col className="languageBox">
-                <input type="radio" value="en" name="language" defaultChecked /> ENG
+                <input type="radio" value="en" name="language" defaultChecked 
+                className="language" /> ENG
                 </Col>
             <Col className="languageBox">
-                <input type="radio" value="bm" name="language" /> BM
+                <input type="radio" value="bm" name="language" className="language" /> BM
                 </Col>
             <Col className="languageBox">
-                <input type="radio" value="cn" name="language" /> 中文
+                <input type="radio" value="cn" name="language" className="language"  /> 中文
                 </Col>
-            <Col></Col>
+         
         </Row>
 
     );

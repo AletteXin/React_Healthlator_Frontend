@@ -32,6 +32,7 @@ function HealthCard({ previousName, previousId, entryRecorded, setEntryRecorded 
     const [legNumb, setlegNumb] = useState("False")
     const [handNumb, setHandNumb] = useState("False");
     const [faceNumb, setFaceNumb] = useState("False");
+    const [abdominalPain, setAbdominalPain] = useState("False");
     const [diabetes, setDiabetes] = useState("False");
     const [highBlood, setHighBlood] = useState("False");
     const [highCholesterol, setHighCholesterol] = useState("False");
@@ -46,7 +47,7 @@ function HealthCard({ previousName, previousId, entryRecorded, setEntryRecorded 
     const [lungCancer, setLungCancer] = useState("False");
 
     useEffect(() => {
-        fetch('http://127.0.0.1:5000/api/records/show', {
+        fetch('https://healthrecordcommunicator.herokuapp.com/api/records/show', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -80,6 +81,7 @@ function HealthCard({ previousName, previousId, entryRecorded, setEntryRecorded 
             setlegNumb(data.record_details[0][0]['Legnumbness']);
             setHandNumb(data.record_details[0][0]['Handnumbness']);
             setFaceNumb(data.record_details[0][0]['Facenumbness']);
+            setAbdominalPain(data.record_details[0][0]['Abdominalpain']);
             setDiabetes(data.record_details[0][0]['Diabetes']);
             setHighBlood(data.record_details[0][0]['Highbloodpressure']);
             setHighCholesterol(data.record_details[0][0]['Highcholesterol']);
@@ -120,7 +122,7 @@ function HealthCard({ previousName, previousId, entryRecorded, setEntryRecorded 
 
                             <Container className="subBox">
                                 <Row className="boxSubtitle">{t("overview.title")}</Row>
-                                <HealthCardField field="Form ID" patientInfo={id} />
+                                <HealthCardField field={t("formid.title")} patientInfo={id} />
                                 <HealthCardField field={t("name.label")} patientInfo={name} />
 
                                 {gender == "Female" ? (<Row className="fieldRow">
@@ -133,7 +135,7 @@ function HealthCard({ previousName, previousId, entryRecorded, setEntryRecorded 
                                         <Col></Col><Col className="genderBoxChosen">{t("male.answer")}</Col>
                                         <Col className="genderBox">{t("female.answer")}</Col>  </Row>)}
 
-                                <HealthCardField field={t("gender.label")} patientInfo={gender} />
+
                                 <HealthCardField field={t("birthdate.label")} patientInfo={birthdate} />
                                 <HealthCardField field={t("address.label")} patientInfo={address} />
                                 <HealthCardField field={t("medications.label")} patientInfo={medications} />
@@ -154,7 +156,8 @@ function HealthCard({ previousName, previousId, entryRecorded, setEntryRecorded 
                                     secondSymptom={t("chestpain.label")} second={chestPain}
                                     thirdSymptom={t("legnumb.label")} third={legNumb} />
                                 <SymptomRow firstSymptom={t("handnumb.label")} first={handNumb}
-                                    secondSymptom={t("facenumb.label")} second={faceNumb} />
+                                    secondSymptom={t("facenumb.label")} second={faceNumb} 
+                                    thirdSymptom={t("abdominalpain.label")} third={abdominalPain} />
                             </Container>
 
                             <Container className="subBox">
@@ -176,7 +179,7 @@ function HealthCard({ previousName, previousId, entryRecorded, setEntryRecorded 
                         </Container>
                     </div>
                     <Container>
-                        <button onClick={(e) => createNewForm(e)}>Create New Form</button>
+                        <button onClick={(e) => createNewForm(e)} className="submitbutton">Create New Form</button>
                     </Container>
                 </div>)}
 

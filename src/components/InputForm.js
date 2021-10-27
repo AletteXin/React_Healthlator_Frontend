@@ -16,7 +16,7 @@ function InputForm({ setEntryRecorded, entryRecorded }) {
     const { t, i18n } = useTranslation();
 
     const [name, setName] = useState("");
-    const [gender, setGender] = useState('Male');
+    const [gender, setGender] = useState('Female');
     const [birthdate, setBirthDate] = useState("");
     const [address, setAddress] = useState("");
     const [medications, setMedications] = useState("");
@@ -35,6 +35,7 @@ function InputForm({ setEntryRecorded, entryRecorded }) {
     const [legNumb, setlegNumb] = useState("False")
     const [handNumb, setHandNumb] = useState("False");
     const [faceNumb, setFaceNumb] = useState("False");
+    const [abdominalPain, setAbdominalPain] = useState("False");
     const [diabetes, setDiabetes] = useState("False");
     const [highBlood, setHighBlood] = useState("False");
     const [highCholesterol, setHighCholesterol] = useState("False");
@@ -53,7 +54,7 @@ function InputForm({ setEntryRecorded, entryRecorded }) {
 
     const submitNewEntry = (e) => {
         e.preventDefault()
-        fetch('http://127.0.0.1:5000/api/records/create', {
+        fetch('https://healthrecordcommunicator.herokuapp.com/api/records/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -79,6 +80,7 @@ function InputForm({ setEntryRecorded, entryRecorded }) {
                 Legnumbness: legNumb,
                 Handnumbness: handNumb,
                 Facenumbness: faceNumb,
+                Abdominalpain: abdominalPain,
                 Diabetes: diabetes,
                 Highbloodpressure: highBlood,
                 Highcholesterol: highCholesterol,
@@ -91,10 +93,6 @@ function InputForm({ setEntryRecorded, entryRecorded }) {
                 COPD: COPD,
                 Depression: depression,
                 Lungcancer: lungCancer,
-
-
-
-
             })
         }).then(response => response.json().then(data => {
             console.log("Connected")
@@ -164,7 +162,7 @@ function InputForm({ setEntryRecorded, entryRecorded }) {
                                         </select>
                                     </label>
                                 </Col> */}
-                                <Col></Col>
+                                <Col ></Col>
                                 <Col className={maleGenderStyle} onClick={changeToMaleGenderStyle}>{t("male.answer")}</Col>
                                 <Col className={femaleGenderStyle} onClick={changeToFemaleGenderStyle}>{t("female.answer")}</Col>
                                 
@@ -176,7 +174,8 @@ function InputForm({ setEntryRecorded, entryRecorded }) {
                                     <label>
                                         <DatePicker
                                             selected={birthdate}
-                                            onChange={birthdate => setBirthDate(birthdate)} />
+                                            onChange={birthdate => setBirthDate(birthdate)} 
+                                            className="inputBox" />
                                     </label>
                                 </Col>
                             </Row>
@@ -263,7 +262,8 @@ function InputForm({ setEntryRecorded, entryRecorded }) {
                                 secondSymptom={t("chestpain.label")} setSecond={setChestPain}
                                 thirdSymptom={t("legnumb.label")} setThird={setlegNumb} />
                             <ChooseSymptom firstSymptom={t("handnumb.label")} setFirst={setHandNumb}
-                                secondSymptom={t("facenumb.label")} setSecond={setFaceNumb} />
+                                secondSymptom={t("facenumb.label")} setSecond={setFaceNumb} 
+                                thirdSymptom={t("abdominalpain.label")} setThird={setAbdominalPain}/>
 
                         </Container>
 
@@ -283,12 +283,12 @@ function InputForm({ setEntryRecorded, entryRecorded }) {
                                 thirdSymptom={t("lungcancer.label")} setThird={setLungCancer} />
                         </Container>
 
-                        <input type="submit" value="Submit" />
+                        <input type="submit" value={t("submit.title")} className="submitbutton" />
                     </form>)
                     : (<Container>
                         <p>Your form has been created. Your Form ID is {message}</p>
 
-                        <button onClick={(e) => createNewForm(e)}>Create New Form</button>
+                        <button onClick={(e) => createNewForm(e)} className="submitbutton">Create New Form</button>
 
                     </Container>
                     )}

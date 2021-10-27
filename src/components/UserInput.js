@@ -48,7 +48,7 @@ function UserInput({ setPreviousName, setPreviousId, setEntryRecorded }) {
                         </Row>
 
                         <Row className="fieldRow">
-                            <Col className="fieldRow">Form ID</Col>
+                            <Col className="fieldRow">{t("formid.title")}</Col>
                             <Col className="inputField">
                                 <label>
                                     <input
@@ -62,7 +62,8 @@ function UserInput({ setPreviousName, setPreviousId, setEntryRecorded }) {
                         </Row>
                         <input
                             type="submit"
-                            value="Submit"
+                            value={t("submit.title")}
+                            className="submitbutton"
                         />
                     </form>
                 </Container>
